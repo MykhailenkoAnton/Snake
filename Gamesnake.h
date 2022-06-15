@@ -16,7 +16,7 @@ private:
 public:
     GameSnake();
     void run();
-    void sleep_and_user_choice();
+    void sleep_and_user_choice(Snake  *snake);
     eActoins reading_user_input();
 private:
     Field field_;

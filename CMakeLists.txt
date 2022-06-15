@@ -7,12 +7,15 @@ set(SOURCE_FILES
     main.cpp
     Gamesnake.cpp
     game_elements/Field.cpp
+    game_elements/Snake.cpp
+
 )
 
 # Add headers files.
 set(HEADER_FILES
     Gamesnake.h
     game_elements/Field.h
+    game_elements/Snake.h
 )
 
 # Add subdirectory.
