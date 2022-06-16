@@ -13,11 +13,11 @@ void GameSnake::run()
     while (!game_status)
     {
         snake1.move_snake();
+        field_.draw_snake_on_field(&snake1);
         if (field_.is_snakes_body(&snake1))
         {
             game_status = true;
         }
-        field_.draw_snake_on_field(&snake1);
         field_.draw_field();
         sleep_and_user_choice(&snake1);
     }

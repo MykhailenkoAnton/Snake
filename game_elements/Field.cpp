@@ -169,6 +169,16 @@ bool Field::is_snakes_body(Snake *snake)
     {
         if (snakes_head_coord == SNAKES_BODY)
         {
+            for (int i = 0; i < ROWS; i++)
+            {
+                for (int j = 0; j < COLUMNS; j++)
+                {
+                    if (FIELD[i][j] == SNAKES_BODY)
+                    {
+                        FIELD[i][j] = SNAKES_HEAD;
+                    }
+                }
+            }
             return true;
         }
     }
