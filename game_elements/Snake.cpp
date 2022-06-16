@@ -18,6 +18,8 @@ Snake::Snake()
     snake_coord.push_back(body4);
     coord body5 = {13, 10};
     snake_coord.push_back(body5);
+    coord body6 = {14, 10};
+    snake_coord.push_back(body6);
 }
 
 std::deque<coord> Snake::get_snake_coord() const

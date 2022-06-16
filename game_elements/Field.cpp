@@ -163,5 +163,14 @@ void Field::clear_field()
 
 bool Field::is_snakes_body(Snake *snake)
 {
-    
+    auto active_snake_coords = snake->get_snake_coord();
+    auto snakes_head_coord = FIELD[active_snake_coords[0].x][active_snake_coords[0].y];
+    for (int i = 0; i < active_snake_coords.size(); i++)
+    {
+        if (snakes_head_coord == SNAKES_BODY)
+        {
+            return true;
+        }
+    }
+    return false;
 }

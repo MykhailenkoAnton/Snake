@@ -13,11 +13,13 @@ enum class eActoins
 class GameSnake
 {
 private:
+    bool game_status = false;
 public:
     GameSnake();
     void run();
     void sleep_and_user_choice(Snake  *snake);
     eActoins reading_user_input();
+    void update_snake_on_field_and_sleep(Snake  *snake);
 private:
     Field field_;
 };
