@@ -12,8 +12,11 @@ public:
     Field();
     void fill_field_by_coord();
     void draw_field();
-    void draw_snake_on_field(const Snake * snake);
+    void draw_snake_on_field(Snake * snake);
     void from_left_side_to_right_side(Snake * snake);
+    void from_right_side_to_left_side(Snake * snake);
+    void from_up_to_down(Snake * snake);
+    void from_down_to_up(Snake * snake);
 
     void clear_field();
 

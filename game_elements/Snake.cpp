@@ -12,7 +12,12 @@ Snake::Snake()
     snake_coord.push_back(body1);
     coord body2 = {10, 10};
     snake_coord.push_back(body2);
-
+    coord body3 = {11, 10};
+    snake_coord.push_back(body3);
+    coord body4 = {12, 10};
+    snake_coord.push_back(body4);
+    coord body5 = {13, 10};
+    snake_coord.push_back(body5);
 }
 
 std::deque<coord> Snake::get_snake_coord() const
