@@ -13,6 +13,7 @@ public:
     void fill_field_by_coord();
     void draw_field();
     void draw_snake_on_field(const Snake * snake);
+    void from_left_side_to_right_side(Snake * snake);
 
     void clear_field();
 

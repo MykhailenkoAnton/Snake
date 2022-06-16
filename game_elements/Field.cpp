@@ -56,16 +56,35 @@ void Field::draw_snake_on_field(const Snake * snake)
     
 }
 
+void Field::from_left_side_to_right_side(Snake * snake)
+{
+    auto snake_coord = snake->get_snake_coord();
+    for (int i = 1, j = 0; i < ROWS - 1; i++)
+    {
+        if (FIELD[snake_coord[0].x][snake_coord[0].y] == FIELD[i][j])
+        {
+            snake_coord[0].x = i;
+            snake_coord[0].y = COLUMNS - 1;
+            snake->set_new_coord(snake_coord);
+            break;
+        }
+        
+    }
+    
+    
+}
+
 void Field::clear_field()
 {
-    for (int i = 1; i < ROWS - 1; i++)
+    for (int i = 0; i < ROWS - 1; i++)
     {
-        for (int j = 1; j < COLUMNS - 1; j++)
+        for (int j = 0; j < COLUMNS - 1; j++)
         {
             if (FIELD[i][j] == SNAKES_HEAD || FIELD[i][j] == SNAKES_BODY)
             {
                 FIELD[i][j] = EMPTY;
             }
+            
         }
     }
 }

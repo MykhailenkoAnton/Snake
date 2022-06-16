@@ -20,11 +20,10 @@ class Snake
 public:
     Snake();
     std::deque<coord> get_snake_coord() const;
-    coord get_snake_coord_old() const;
 
     void set_new_direction(Direction new_direction);
 
-    void save_old_cord();
+    void set_new_coord(std::deque<coord>);
 
     void move_snake();
 

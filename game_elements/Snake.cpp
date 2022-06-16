@@ -20,13 +20,6 @@ std::deque<coord> Snake::get_snake_coord() const
     return snake_coord;
 }
 
-coord Snake::get_snake_coord_old() const
-{
-}
-
-void Snake::save_old_cord()
-{
-}
 
 void Snake::move_snake()
 {
@@ -116,4 +109,11 @@ void Snake::move_up()
         snake_coord.push_front(snake_new_head);
         snake_coord.pop_back();
     }
+}
+
+
+void Snake::set_new_coord(std::deque<coord> new_snake_coord )
+{
+    snake_coord[0].x = new_snake_coord[0].x;
+    snake_coord[0].y = new_snake_coord[0].y;
 }

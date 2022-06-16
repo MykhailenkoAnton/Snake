@@ -14,6 +14,7 @@ void GameSnake::run()
     {
         snake1.move_snake();
         field_.draw_snake_on_field(&snake1);
+        field_.from_left_side_to_right_side(&snake1);
         field_.draw_field();
         sleep_and_user_choice(&snake1);
     }
