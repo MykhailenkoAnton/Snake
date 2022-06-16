@@ -1,5 +1,6 @@
 #pragma once
 #include "Snake.h"
+#include "Fruits.h"
 const int ROWS = 15;
 const int COLUMNS = 20;
 
@@ -21,5 +22,11 @@ public:
     void clear_field();
 
     bool is_snakes_body(Snake *snake);
+
+
+    void draw_fruit(Fruits * fruits);
+
+
+    bool is_eating_for_snake(Snake * snake, Fruits * fruits);
 };
 

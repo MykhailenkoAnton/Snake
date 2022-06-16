@@ -4,6 +4,7 @@ const char BORD = 'X';
 const char EMPTY = ' ';
 const char SNAKES_HEAD = '0';
 const char SNAKES_BODY = 'o';
+const char FRUIT = 'F';
 
 Field::Field()
 {
@@ -48,7 +49,6 @@ void Field::draw_field()
 void Field::draw_snake_on_field(Snake * snake)
 {
     clear_field();
-
     auto snake_coord = snake->get_snake_coord();
     auto snakes_head_coord = FIELD[snake_coord[0].x][snake_coord[0].y];
 
@@ -182,5 +182,26 @@ bool Field::is_snakes_body(Snake *snake)
             return true;
         }
     }
+    return false;
+}
+
+void Field::draw_fruit(Fruits * fruits)
+{
+    auto frut_coord = fruits->get_coord_fruit();
+    FIELD[frut_coord.x][frut_coord.y] = FRUIT;
+}
+
+bool Field::is_eating_for_snake(Snake * snake, Fruits * fruits)
+{
+    auto frut_coord = fruits->get_coord_fruit();
+
+    auto active_snake_coords = snake->get_snake_coord();
+    auto snakes_head_coord = FIELD[active_snake_coords[0].x][active_snake_coords[0].y];
+
+    if (active_snake_coords[0].x == frut_coord.x && active_snake_coords[0].y == frut_coord.y)
+    {
+        return true;
+    }
+    
     return false;
 }

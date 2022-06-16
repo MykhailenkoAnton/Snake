@@ -3,23 +3,34 @@
 #include "Gamesnake.h"
 #include "Field.h"
 #include "Snake.h"
+#include "Fruits.h"
 const int DELAY = 600000;
 GameSnake::GameSnake()
 {
 }
 void GameSnake::run()
 {
+    Fruits fruit;
     Snake snake1;
+    field_.draw_fruit(&fruit);
     while (!game_status)
     {
-        snake1.move_snake();
-        field_.draw_snake_on_field(&snake1);
         if (field_.is_snakes_body(&snake1))
         {
             game_status = true;
         }
-        field_.draw_field();
-        sleep_and_user_choice(&snake1);
+        else
+        {
+            if (field_.is_eating_for_snake(&snake1, &fruit))
+            {
+                fruit.set_new_coord_for_fruit();
+                field_.draw_fruit(&fruit);
+            }
+            snake1.move_snake();
+            field_.draw_snake_on_field(&snake1);
+            field_.draw_field();
+            sleep_and_user_choice(&snake1);
+        }
     }
 }
 

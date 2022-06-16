@@ -6,20 +6,6 @@ Snake::Snake()
 {
     coord head = {7, 10};
     snake_coord.push_front(head);
-    coord body = {8, 10};
-    snake_coord.push_back(body);
-    coord body1 = {9, 10};
-    snake_coord.push_back(body1);
-    coord body2 = {10, 10};
-    snake_coord.push_back(body2);
-    coord body3 = {11, 10};
-    snake_coord.push_back(body3);
-    coord body4 = {12, 10};
-    snake_coord.push_back(body4);
-    coord body5 = {13, 10};
-    snake_coord.push_back(body5);
-    coord body6 = {14, 10};
-    snake_coord.push_back(body6);
 }
 
 std::deque<coord> Snake::get_snake_coord() const
