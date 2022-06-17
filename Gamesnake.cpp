@@ -12,7 +12,6 @@ void GameSnake::run()
 {
     Snake snake1;
     Fruits fruit;
-    field_.draw_fruit(&fruit);
     while (!game_status)
     {
         if (field_.is_snakes_body(&snake1))
@@ -22,6 +21,7 @@ void GameSnake::run()
         }
         else
         {
+            field_.draw_fruit(&fruit);
             if (field_.is_eating_for_snake(&snake1, &fruit))
             {
                 snake1.add_new_head();
