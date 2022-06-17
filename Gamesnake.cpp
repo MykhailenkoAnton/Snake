@@ -17,12 +17,14 @@ void GameSnake::run()
     {
         if (field_.is_snakes_body(&snake1))
         {
+            field_.draw_field(game_point);
             game_status = true;
         }
         else
         {
             if (field_.is_eating_for_snake(&snake1, &fruit))
             {
+                snake1.add_new_head();
                 game_point += 10;
                 fruit.set_new_coord_for_fruit();
                 field_.draw_fruit(&fruit);

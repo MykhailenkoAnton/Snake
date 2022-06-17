@@ -31,6 +31,8 @@ public:
     void move_down();
     void move_left();
     void move_up();
+
+    void add_new_head();
 protected:
     std::deque<coord> snake_coord;
     Direction direction = Direction::NO_ACTION;

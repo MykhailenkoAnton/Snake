@@ -28,5 +28,7 @@ public:
 
 
     bool is_eating_for_snake(Snake * snake, Fruits * fruits);
+
+    void draw_snake_body_head(Snake * snake);
 };
 

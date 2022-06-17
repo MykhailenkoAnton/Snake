@@ -170,6 +170,11 @@ bool Field::is_snakes_body(Snake *snake)
     {
         if (snakes_head_coord == SNAKES_BODY)
         {
+            for (int j = 0; j < active_snake_coords.size(); j++)
+            {
+                FIELD[active_snake_coords[j].x][active_snake_coords[j].y] = SNAKES_HEAD;
+            }
+            
             return true;
         }
     }
@@ -196,3 +201,4 @@ bool Field::is_eating_for_snake(Snake * snake, Fruits * fruits)
     
     return false;
 }
+

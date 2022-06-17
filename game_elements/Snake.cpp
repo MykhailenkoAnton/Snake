@@ -110,3 +110,11 @@ void Snake::set_new_coord(std::deque<coord> new_snake_coord )
     snake_coord[0].x = new_snake_coord[0].x;
     snake_coord[0].y = new_snake_coord[0].y;
 }
+
+void Snake::add_new_head()
+{
+    coord snake_new_head;
+    snake_new_head.x = snake_coord[0].x;
+    snake_new_head.y = snake_coord[0].y;
+    snake_coord.push_back(snake_new_head);
+}
