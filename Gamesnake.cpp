@@ -10,8 +10,8 @@ GameSnake::GameSnake()
 }
 void GameSnake::run()
 {
-    Fruits fruit;
     Snake snake1;
+    Fruits fruit;
     field_.draw_fruit(&fruit);
     while (!game_status)
     {
@@ -23,12 +23,13 @@ void GameSnake::run()
         {
             if (field_.is_eating_for_snake(&snake1, &fruit))
             {
+                game_point += 10;
                 fruit.set_new_coord_for_fruit();
                 field_.draw_fruit(&fruit);
             }
             snake1.move_snake();
             field_.draw_snake_on_field(&snake1);
-            field_.draw_field();
+            field_.draw_field(game_point);
             sleep_and_user_choice(&snake1);
         }
     }

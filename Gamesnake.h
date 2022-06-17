@@ -14,6 +14,7 @@ class GameSnake
 {
 private:
     bool game_status = false;
+    int game_point = 0;
 public:
     GameSnake();
     void run();

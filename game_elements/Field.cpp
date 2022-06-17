@@ -31,9 +31,10 @@ void Field::fill_field_by_coord()
         }
     }
 }
-void Field::draw_field()
+void Field::draw_field(int game_point)
 {
     system("clear");
+    std::cout << "Game point: " << game_point << std::endl;
     
     for (int row = 0; row < ROWS; row++)
     {
