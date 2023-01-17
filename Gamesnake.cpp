@@ -1,61 +1,77 @@
 #include <conio.h>
 #include <time.h>
+#include <thread>
+#include <chrono>
+
 #include "Gamesnake.h"
 #include "Field.h"
 #include "Snake.h"
 #include "Fruits.h"
-const int DELAY = 600000;
+#include "Menu.h"
+
+const int STEP_MS = 350;
+
 GameSnake::GameSnake()
 {
 }
+
+// main logic of game
 void GameSnake::run()
 {
-    Snake snake1;
+    Snake * snake1 = new Snake;
     Fruits fruit;
-    while (!game_status)
+    Menu * menu = new Menu;
+    menu->showMenu();
+    delete menu;
+
+    std::thread t1(&GameSnake::userChoice, this, snake1);
+    t1.detach();
+
+    while (!_gameStatus)
     {
-        if (field_.is_snakes_body(&snake1))
+        if (field_.isSnakesBody(snake1))
         {
-            field_.draw_field(game_point);
-            game_status = true;
+            field_.drawField(_gamePoint);
+            _gameStatus = true;
         }
         else
         {
-            field_.draw_fruit(&fruit);
-            if (field_.is_eating_for_snake(&snake1, &fruit))
+            field_.drawFruit(&fruit);
+            if (field_.isEatingForSnake(snake1, &fruit))
             {
-                snake1.add_new_head();
-                game_point += 10;
-                fruit.set_new_coord_for_fruit();
-                field_.draw_fruit(&fruit);
+                snake1->addNewHead();
+                _gamePoint += 10;
+                fruit.setNewCoordForFruit();
+                field_.drawFruit(&fruit);
             }
-            snake1.move_snake();
-            field_.draw_snake_on_field(&snake1);
-            field_.draw_field(game_point);
-            sleep_and_user_choice(&snake1);
+            snake1->moveSnake();
+            field_.drawSnakeOnField(snake1);
+            field_.drawField(_gamePoint);
+            std::this_thread::sleep_for(std::chrono::milliseconds(STEP_MS));
         }
     }
+    delete snake1;
 }
 
-void GameSnake::sleep_and_user_choice(Snake *snake)
+// direction snake after user iput
+void GameSnake::userChoice(Snake *snake)
 {
-    clock_t end_time = clock() + DELAY;
-    while (clock() < end_time);
+    while (true)
     {
-        const auto user_input = reading_user_input();
+        const auto user_input = readingUserInput();
         switch (user_input)
         {
         case eActoins::LEFT:
-            snake->set_new_direction(Direction::LEFT);
+            snake->setNewDirection(Direction::LEFT);
             break;
         case eActoins::RIGHT:
-            snake->set_new_direction(Direction::RIGHT);
+            snake->setNewDirection(Direction::RIGHT);
             break;
         case eActoins::DOWN:
-            snake->set_new_direction(Direction::DOWN);
+            snake->setNewDirection(Direction::DOWN);
             break;
         case eActoins::UP:
-            snake->set_new_direction(Direction::UP);
+            snake->setNewDirection(Direction::UP);
             break;
         default:
             break;
@@ -64,12 +80,10 @@ void GameSnake::sleep_and_user_choice(Snake *snake)
     
 }
 
-
-eActoins GameSnake::reading_user_input()
+// User input
+eActoins GameSnake::readingUserInput()
 {
-    if (kbhit())
-    {
-        const auto ch = getch();
+        const auto ch = _getch();
         switch (ch)
         {
         case 'a':
@@ -85,12 +99,13 @@ eActoins GameSnake::reading_user_input()
             return eActoins::UP;
             break;
         case '0':
+        case 'q':
             // Use '0' for exit from thegame.
             exit(0);
         default:
             break;
         }
-    }
+    // }
 
     return eActoins::NO_ACTIONS;
 }

@@ -1,120 +1,123 @@
 #include <cstdlib>
+
 #include "Snake.h"
+
 extern const int ROWS;
 extern const int COLUMNS;
 Snake::Snake()
 {
     coord head = {7, 10};
-    snake_coord.push_front(head);
+    _snakeCoord.push_front(head);
 }
 
-std::deque<coord> Snake::get_snake_coord() const
+std::deque<coord> Snake::getSnakeCoord() const
 {
-    return snake_coord;
+    return _snakeCoord;
 }
 
-
-void Snake::move_snake()
+// move snake after change direction
+void Snake::moveSnake()
 {
-    switch (direction)
+    switch (_direction)
     {
     case Direction::DOWN:
-        move_down();
+        moveDown();
         break;
     case Direction::UP:
-        move_up();
+        moveUp();
         break;
     case Direction::RIGHT:
-        move_right();
+        moveRight();
         break;
     case Direction::LEFT:
-        move_left();
+        moveLeft();
         break;
     default:
         break;
     }
 }
 
-void Snake::set_new_direction(Direction new_direction)
+void Snake::setNewDirection(Direction new_direction)
 {
-    direction = new_direction;
+    _direction = new_direction;
 }
 
-void Snake::move_right()
+void Snake::moveRight()
 {
-    if (snake_coord.size() == 1)
+    if (_snakeCoord.size() == 1)
     {
-        snake_coord[0].y++;
+        _snakeCoord[0].y++;
     }
     else
     {
         coord snake_new_head;
-        snake_new_head.x = snake_coord[0].x;
-        snake_new_head.y = snake_coord[0].y + 1;
-        snake_coord.push_front(snake_new_head);
-        snake_coord.pop_back();
+        snake_new_head.x = _snakeCoord[0].x;
+        snake_new_head.y = _snakeCoord[0].y + 1;
+        _snakeCoord.push_front(snake_new_head);
+        _snakeCoord.pop_back();
     }
 }
 
-void Snake::move_left()
+void Snake::moveLeft()
 {
-    if (snake_coord.size() == 1)
+    if (_snakeCoord.size() == 1)
     {
-        snake_coord[0].y--;
+        _snakeCoord[0].y--;
     }
     else
     {
         coord snake_new_head;
-        snake_new_head.x = snake_coord[0].x;
-        snake_new_head.y = snake_coord[0].y - 1;
-        snake_coord.push_front(snake_new_head);
-        snake_coord.pop_back();
+        snake_new_head.x = _snakeCoord[0].x;
+        snake_new_head.y = _snakeCoord[0].y - 1;
+        _snakeCoord.push_front(snake_new_head);
+        _snakeCoord.pop_back();
     }
 }
 
-void Snake::move_down()
+void Snake::moveDown()
 {
-    if (snake_coord.size() == 1)
+    if (_snakeCoord.size() == 1)
     {
-        snake_coord[0].x++;
+        _snakeCoord[0].x++;
     }
     else
     {
         coord snake_new_head;
-        snake_new_head.x = snake_coord[0].x + 1;
-        snake_new_head.y = snake_coord[0].y;
-        snake_coord.push_front(snake_new_head);
-        snake_coord.pop_back();
+        snake_new_head.x = _snakeCoord[0].x + 1;
+        snake_new_head.y = _snakeCoord[0].y;
+        _snakeCoord.push_front(snake_new_head);
+        _snakeCoord.pop_back();
     }
 }
 
-void Snake::move_up()
+void Snake::moveUp()
 {
-    if (snake_coord.size() == 1)
+    if (_snakeCoord.size() == 1)
     {
-        snake_coord[0].x--;
+        _snakeCoord[0].x--;
     }
     else
     {
         coord snake_new_head;
-        snake_new_head.x = snake_coord[0].x - 1;
-        snake_new_head.y = snake_coord[0].y;
-        snake_coord.push_front(snake_new_head);
-        snake_coord.pop_back();
+        snake_new_head.x = _snakeCoord[0].x - 1;
+        snake_new_head.y = _snakeCoord[0].y;
+        _snakeCoord.push_front(snake_new_head);
+        _snakeCoord.pop_back();
     }
 }
 
 
-void Snake::set_new_coord(std::deque<coord> new_snake_coord )
+void Snake::setNewCoord(std::deque<coord> new_snake_coord )
 {
-    snake_coord[0].x = new_snake_coord[0].x;
-    snake_coord[0].y = new_snake_coord[0].y;
+    _snakeCoord[0].x = new_snake_coord[0].x;
+    _snakeCoord[0].y = new_snake_coord[0].y;
 }
 
-void Snake::add_new_head()
+// if snake find and eat fruit
+void Snake::addNewHead()
 {
     coord snake_new_head;
-    snake_new_head.x = snake_coord[0].x;
-    snake_new_head.y = snake_coord[0].y;
-    snake_coord.push_back(snake_new_head);
+    snake_new_head.x = _snakeCoord[0].x;
+    snake_new_head.y = _snakeCoord[0].y;
+    _snakeCoord.push_back(snake_new_head);
 }

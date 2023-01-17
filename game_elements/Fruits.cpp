@@ -1,23 +1,26 @@
-#include "Fruits.h"
 #include <cstdlib>
 #include <ctime>
+
+#include "Fruits.h"
+
 const int MAX_ROW = 13;
 const int MAX_COL = 18;
 Fruits::Fruits()
 {
     srand(time(0));
-    frui.x = 1 +rand() % MAX_ROW;
-    frui.y = 1 +rand() % MAX_COL;
+    _fruit.x = 1 +rand() % MAX_ROW;
+    _fruit.y = 1 +rand() % MAX_COL;
 }
 
-fruit_coord Fruits::get_coord_fruit()
+fruitCoord Fruits::getCoordFruit()
 {
-    return frui;
+    return _fruit;
 }
 
-void Fruits::set_new_coord_for_fruit()
+// random fruit coord
+void Fruits::setNewCoordForFruit()
 {
     srand(time(0));
-    frui.x = 1 + rand() % MAX_ROW;
-    frui.y = 1 + rand() % MAX_COL;
+    _fruit.x = 1 + rand() % MAX_ROW;
+    _fruit.y = 1 + rand() % MAX_COL;
 }

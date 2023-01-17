@@ -1,6 +1,6 @@
 #pragma once
 
-struct fruit_coord
+struct fruitCoord
 {
     int x;
     int y;
@@ -9,10 +9,10 @@ struct fruit_coord
 class Fruits
 {
 protected:
-    fruit_coord frui;
+    fruitCoord _fruit;
 public:
     Fruits();
-    fruit_coord get_coord_fruit();
-    void set_new_coord_for_fruit();
+    fruitCoord getCoordFruit();
+    void setNewCoordForFruit();
 };
 

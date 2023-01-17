@@ -1,4 +1,5 @@
 #pragma once
+
 #include<deque>
 struct coord
 {
@@ -19,21 +20,21 @@ class Snake
 
 public:
     Snake();
-    std::deque<coord> get_snake_coord() const;
+    std::deque<coord> getSnakeCoord() const;
 
-    void set_new_direction(Direction new_direction);
+    void setNewDirection(Direction new_direction);
 
-    void set_new_coord(std::deque<coord>);
+    void setNewCoord(std::deque<coord>);
 
-    void move_snake();
+    void moveSnake();
 
-    void move_right();
-    void move_down();
-    void move_left();
-    void move_up();
+    void moveRight();
+    void moveDown();
+    void moveLeft();
+    void moveUp();
 
-    void add_new_head();
+    void addNewHead();
 protected:
-    std::deque<coord> snake_coord;
-    Direction direction = Direction::NO_ACTION;
+    std::deque<coord> _snakeCoord;
+    Direction _direction = Direction::NO_ACTION;
 };

@@ -1,6 +1,6 @@
 #pragma once
+
 #include "Field.h"
-#include <iostream>
 
 enum class eActoins
 {
@@ -12,15 +12,18 @@ enum class eActoins
 };
 class GameSnake
 {
-private:
-    bool game_status = false;
-    int game_point = 0;
+
 public:
     GameSnake();
     void run();
-    void sleep_and_user_choice(Snake  *snake);
-    eActoins reading_user_input();
-    void update_snake_on_field_and_sleep(Snake  *snake);
+    
 private:
+    void userChoice(Snake  *snake);
+    eActoins readingUserInput();
+
+private:
+    bool _gameStatus = false;
+    int _gamePoint = 0;
+
     Field field_;
 };

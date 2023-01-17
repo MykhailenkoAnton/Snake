@@ -24,6 +24,8 @@ set(DIRS
     game_elements
 )
 
+# set (CMAKE_CXX_STANDARD_LIBRARIES "-lncurses")
+
 # Add executable target.
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
